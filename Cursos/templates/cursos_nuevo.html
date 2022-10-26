@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if user.is_superuser %}
+        <h1 style="text-align: center;">Registrar nuevo curso</h1>
+        <div style="margin:auto; width: 60%; border: 1px solid #000000; padding: 10px; margin-top: 5px;">
+            <form class="row g-3" action="" method="post">{% csrf_token %}
+                {{form|crispy}}
+                <br>
+                <input style="margin-left: 47%; min-width: 100px; max-width: 100px;" type="submit"></input>
+            </form>
+        </div>
+    {% else %}
+        <h1>Pagina no encontrada</h1>
+    {% endif %}
+{% endblock %}
+<!--
+
+<h1 style="color:black; text-align: center;"> Registrar un nuevo curso </h1>
+
+<form class="row g-3" style="padding: 50px" action="" method="post"> {% csrf_token %}
+    <div class="col-4">
+        <label for="Nombre" class="form-label">Nombre del curso: </label>
+        <input type="text" class="form-control" name="Nombre_C">
+    </div>
+    <div class="col-4">
+        <label for="Descripcion" class="form-label">Descripcion del curso:</label>
+        <input type="text" class="form-control" name="Apellido_Paterno_C" >
+    </div>
+    <div class="col-4">
+        <label for="Creador" class="form-label">Creador:</label>
+        <input type="text" class="form-control" name="Apellido_Materno_C">
+    </div>
+    <div class="col-2">
+        <label for="Experiencia" class="form-label">Años de experiencia:</label>
+        <input type="int" class="form-control" name="Fecha_Nac_C">
+    </div>
+    <div class="col-2">
+        <label for="Lenguaje" class="form-label">Lenguaje:</label>
+        <input type="text" class="form-control" name="Genero_C">
+    </div>
+    <div class="col-2">
+        <label for="Horas" class="form-label">Horas del curso:</label>
+        <input type="time" class="form-control" name="Genero_C">
+    </div>
+    <div class="col-4">
+        <label for="Contacto" class="form-label">Contacto:</label>
+        <input type="text" class="form-control" name="Genero_C">
+    </div>
+
+    <div class="col-12">
+        <p class="text-end">
+            <button class="btn btn-danger">
+                <a href="{% url 'curso' %}" style="color: white;">Cancelar</a>
+            </button>
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+        </p>
+    </div>
+</form>
+-->

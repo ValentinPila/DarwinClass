@@ -1,0 +1,32 @@
+{% load static %}
+<header>
+    <link rel="stylesheet" href="{% static 'css/bootcss/bootstrap.css' %}">
+
+    <nav class="navbar navbar-dark bg-dark">
+
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <a class="nav-link" style="color: white; margin-left: 50px;" href="{% url 'home' %}">Inicio</a>
+            <a class="nav-link" href="{% url 'curso' %}" style="color: white;">Cursos disponibles</a>
+            <a class="nav-link" href="{% url 'curso_nuevo' %}" style="color: white;">Añadir Curso</a>
+            <a class="nav-link disabled" style="color: white; padding: 5px;">Usuario: {{ user.username }}</a>
+            <a class="nav-link" href="{% url 'admin:password_change' %}" style="color: white; padding: 5px;">Cambiar contraseña</a>
+            <a class="nav-link" style="color: white; margin-right: 80px; padding: 5px;" href="{% url 'logout' %}">Log out 🚪</a>
+        {% else %}
+            <a class="nav-link" style="color: white; margin-left: 50px;" href="{% url 'home' %}">Inicio</a>
+            <a class="nav-link" href="{% url 'curso' %}" style="color: white;">Cursos disponibles</a>
+            <a class="nav-link disabled" style="color: white; padding: 5px;">Usuario: {{ user.username }}</a>
+            <a class="nav-link" href="{% url 'admin:password_change' %}" style="color: white; padding: 5px;">Cambiar contraseña</a>
+            <a class="nav-link" style="color: white; margin-right: 80px; padding: 5px;" href="{% url 'logout' %}">Log out 🚪</a>
+        {% endif %}
+        </div>
+
+    {% else %}
+        <a class="nav-link" style="color: white; margin-left: 30px; padding: 5px;" href="{% url 'login' %}"> Login 👤</a>
+        <a class="nav-link" style="color: white; margin-right: 30px; padding: 5px;" href="{% url 'signup' %}"> Registrarse 📖</a>
+    {% endif %}
+    </nav>
+</header>
+
+{% block content %}
+{% endblock content %}

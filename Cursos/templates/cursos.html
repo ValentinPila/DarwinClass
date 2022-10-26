@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<h1 style="text-align: center;">Cursos</h1>
+<table style="margin: 0 auto;" class="table table-striped table-bordered">
+    <tr class="table-secondary">
+        <th>Curso</th>
+        <th>Imparte</th>
+        <th>Lenguaje</th>
+        <th>Horas del curso</th>
+    </tr>
+    {% for curso in Todos_Los_Cursos %}
+    <tr>
+        <td><a href="{% url 'curso_detalle' curso.pk %}">{{curso.Nombre}}</a></td>
+        <td>{{curso.Creador}}</td>
+        <td>{{curso.Lenguaje}}</td>
+        <td>{{curso.Horas}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
